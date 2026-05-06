@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobby - Players Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="lobby-page">
+    <div class="lobby-container">
+        <aside class="sidebar">
+            <header class="theme-header sidebar-header">
+                <div class="logo-box">DS</div>
+                <div class="header-text">
+                    <h1 style="font-size: 0.9rem; margin: 0;">Console</h1>
+                </div>
+            </header>
+            <div class="profile">
+                <div class="avatar"></div>
+                <div class="user-info">
+                    <h3 id="display-username">Loading...</h3>
+                    <span class="status online">Online</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <button id="logout-btn" class="btn btn-danger">Cerrar sesión</button>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <header class="content-header">
+                <div class="title-group">
+                    <h2>Lobby del juego</h2>
+                    <p class="section-desc">Real-time distributed cluster</p>
+                </div>
+                <div class="header-actions">
+                    <div class="ngrok-badge">
+                        <span class="dot"></span> TUNNEL ACTIVE
+                    </div>
+                    <div id="connection-status" class="status-badge connecting">Connecting...</div>
+                </div>
+            </header>
+
+            <section class="players-section">
+                <div class="section-header">
+                    <h3>Jugadores en línea</h3>
+                </div>
+                <div class="players-grid" id="players-list">
+                    <!-- Players will be rendered here -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Game - Iniciar sesión</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <header class="theme-header">
+            <div class="logo-box">DS</div>
+            <div class="header-text">
+                <h1>Architect Console</h1>
+                <p class="subtitle">Distributed Identity & Sessions</p>
+            </div>
+        </header>
+
+        <main id="auth-forms">
+            <section id="login-section">
+                <h2>Iniciar sesión</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" required placeholder="mario_88">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <p class="toggle-text">¿No tienes cuenta? <a href="#" id="show-register">Registro here</a></p>
+                </form>
+            </section>
+
+            <section id="register-section" class="hidden">
+                <h2>Registro</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="reg-username">Username</label>
+                        <input type="text" id="reg-username" required placeholder="new_player">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-success">Crear cuenta</button>
+                    <p class="toggle-text">¿Ya tienes cuenta? <a href="#" id="show-login">Iniciar sesión here</a></p>
+                </form>
+            </section>
+        </main>
+
+        <div id="message-container"></div>
+    </div>
+    <script src="js/config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
