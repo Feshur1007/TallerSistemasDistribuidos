@@ -15,6 +15,7 @@
                     <h1 style="font-size: 0.9rem; margin: 0;">Console</h1>
                 </div>
             </header>
+
             <div class="profile">
                 <div class="avatar"></div>
                 <div class="user-info">
@@ -22,6 +23,14 @@
                     <span class="status online">Online</span>
                 </div>
             </div>
+
+            <div class="player-controls">
+                <h4>Personalización</h4>
+                <label for="player-color">Color del jugador</label>
+                <input type="color" id="player-color" value="#ff5500">
+                <button id="color-btn" class="btn btn-primary">Aplicar color</button>
+            </div>
+
             <nav class="sidebar-nav">
                 <button id="logout-btn" class="btn btn-danger">Cerrar sesión</button>
             </nav>
@@ -41,6 +50,17 @@
                 </div>
             </header>
 
+            <section class="game-section">
+                <div class="section-header">
+                    <h3>Juego en vivo</h3>
+                    <p>Muévete con WASD o flechas. El servidor calcula la posición.</p>
+                </div>
+
+                <div class="game-wrapper">
+                    <canvas id="game"></canvas>
+                </div>
+            </section>
+
             <section class="players-section">
                 <div class="section-header">
                     <h3>Jugadores en línea</h3>
@@ -51,6 +71,7 @@
             </section>
         </main>
     </div>
+
     <script src="js/config.js"></script>
     <script src="app.js"></script>
 </body>

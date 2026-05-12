@@ -30,7 +30,8 @@ body {
 }
 
 /* Background Glow Effects */
-body::before, body::after {
+body::before,
+body::after {
   content: "";
   position: fixed;
   width: 400px;
@@ -130,6 +131,12 @@ input:focus {
   box-shadow: 0 0 0 4px var(--primary-glow);
 }
 
+input[type="color"] {
+  height: 44px;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
 .btn {
   width: 100%;
   padding: 0.875rem;
@@ -151,6 +158,7 @@ input:focus {
   color: white; 
   box-shadow: 0 4px 12px var(--primary-glow);
 }
+
 .btn-primary:hover {
   background-color: #4f46e5;
 }
@@ -165,6 +173,7 @@ input:focus {
   color: var(--error);
   border: 1px solid rgba(244, 63, 94, 0.2);
 }
+
 .btn-danger:hover {
   background-color: rgba(244, 63, 94, 0.2);
 }
@@ -182,12 +191,40 @@ input:focus {
   font-weight: 600;
 }
 
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
+
+/* Google Login */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--border);
+}
+
+.google-login-box {
+  display: flex;
+  justify-content: center;
+  min-height: 44px;
+}
 
 /* Lobby Page Styles */
 .lobby-page {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .lobby-container {
@@ -209,6 +246,7 @@ input:focus {
   flex-direction: column;
   padding: 2rem;
   border-radius: 24px;
+  flex-shrink: 0;
 }
 
 .profile {
@@ -239,7 +277,28 @@ input:focus {
   font-weight: 600;
 }
 
-.online { color: var(--success); }
+.online {
+  color: var(--success);
+}
+
+.player-controls {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.player-controls h4 {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+.player-controls .btn {
+  margin-top: 0.75rem;
+}
 
 .content {
   flex: 1;
@@ -251,6 +310,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  min-width: 0;
 }
 
 .content-header {
@@ -260,6 +320,7 @@ input:focus {
   padding: 1.5rem 2rem;
   background-color: rgba(255, 255, 255, 0.03);
   border-bottom: 1px solid var(--border);
+  gap: 1rem;
 }
 
 .content-header h2 {
@@ -275,6 +336,7 @@ input:focus {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-family: inherit;
+  white-space: nowrap;
 }
 
 .connecting { 
@@ -295,19 +357,52 @@ input:focus {
   border: 1px solid rgba(244, 63, 94, 0.2);
 }
 
-.players-section {
-  padding: 2.5rem;
-  flex-grow: 1;
-  overflow-y: auto;
+/* Game Section */
+.game-section {
+  padding: 2rem 2.5rem 0;
 }
 
+.game-section .section-header {
+  margin-bottom: 1rem;
+}
+
+.game-section h3,
 .players-section h3 {
   font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-dim);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.game-section p {
+  color: var(--text-dim);
+  font-size: 0.8125rem;
+}
+
+.game-wrapper {
+  width: 100%;
+  overflow: auto;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+#game {
+  display: block;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  max-width: none;
+}
+
+/* Players Section */
+.players-section {
+  padding: 2rem 2.5rem 2.5rem;
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 .players-grid {
@@ -324,14 +419,26 @@ input:focus {
   display: flex;
   align-items: center;
   gap: 1rem;
-  transition: all 0.3s ease;
-  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  animation: none;
 }
 
 .player-card:hover {
   background-color: var(--surface-hover);
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.2);
+}
+
+.player-card span {
+  font-weight: 700;
+}
+
+.player-card small {
+  margin-left: auto;
+  color: var(--text-dim);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .player-avatar {
@@ -345,6 +452,7 @@ input:focus {
   font-weight: 800;
   font-size: 0.875rem;
   color: white;
+  flex-shrink: 0;
 }
 
 #message-container {
@@ -356,12 +464,29 @@ input:focus {
   font-weight: 500;
 }
 
-.msg-error { background-color: rgba(244, 63, 94, 0.1); color: var(--error); border: 1px solid rgba(244, 63, 94, 0.2); }
-.msg-success { background-color: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.2); }
+.msg-error {
+  background-color: rgba(244, 63, 94, 0.1);
+  color: var(--error);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+}
 
+.msg-success {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* Se mantiene la animación disponible, pero no se aplica a player-card para evitar titileo */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Branding and Badges */
@@ -430,6 +555,7 @@ input:focus {
   font-weight: 700;
   font-family: inherit;
   color: var(--text-dim);
+  white-space: nowrap;
 }
 
 .ngrok-badge .dot {
@@ -440,16 +566,48 @@ input:focus {
   box-shadow: 0 0 8px var(--success);
 }
 
-.content::-webkit-scrollbar, .players-section::-webkit-scrollbar {
+.content::-webkit-scrollbar,
+.players-section::-webkit-scrollbar,
+.game-wrapper::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
-.content::-webkit-scrollbar-thumb, .players-section::-webkit-scrollbar-thumb {
+.content::-webkit-scrollbar-thumb,
+.players-section::-webkit-scrollbar-thumb,
+.game-wrapper::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
 }
 
-.content::-webkit-scrollbar-thumb:hover, .players-section::-webkit-scrollbar-thumb:hover {
+.content::-webkit-scrollbar-thumb:hover,
+.players-section::-webkit-scrollbar-thumb:hover,
+.game-wrapper::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
+@media (max-width: 960px) {
+  .lobby-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+  }
+
+  .game-section,
+  .players-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

@@ -3,55 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiplayer Game - Iniciar sesión</title>
+    <title>Lobby - Players Online</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="auth-page">
-    <div class="auth-container">
-        <header class="theme-header">
-            <div class="logo-box">DS</div>
-            <div class="header-text">
-                <h1>Architect Console</h1>
-                <p class="subtitle">Distributed Identity & Sessions</p>
-            </div>
-        </header>
+<body class="lobby-page">
+    <div class="lobby-container">
+        <aside class="sidebar">
+            <header class="theme-header sidebar-header">
+                <div class="logo-box">DS</div>
+                <div class="header-text">
+                    <h1 style="font-size: 0.9rem; margin: 0;">Console</h1>
+                </div>
+            </header>
 
-        <main id="auth-forms">
-            <section id="login-section">
-                <h2>Iniciar sesión</h2>
-                <form id="login-form">
-                    <div class="form-group">
-                        <label for="login-username">Username</label>
-                        <input type="text" id="login-username" required placeholder="mario_88">
+            <div class="profile">
+                <div class="avatar"></div>
+                <div class="user-info">
+                    <h3 id="display-username">Loading...</h3>
+                    <span class="status online">Online</span>
+                </div>
+            </div>
+
+            <div class="player-controls">
+                <h4>Personalización</h4>
+                <label for="player-color">Color del jugador</label>
+                <input type="color" id="player-color" value="#ff5500">
+                <button id="color-btn" class="btn btn-primary">Aplicar color</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button id="logout-btn" class="btn btn-danger">Cerrar sesión</button>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <header class="content-header">
+                <div class="title-group">
+                    <h2>Lobby del juego</h2>
+                    <p class="section-desc">Real-time distributed cluster</p>
+                </div>
+                <div class="header-actions">
+                    <div class="ngrok-badge">
+                        <span class="dot"></span> TUNNEL ACTIVE
                     </div>
-                    <div class="form-group">
-                        <label for="login-password">Password</label>
-                        <input type="password" id="login-password" required placeholder="••••••••">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                    <p class="toggle-text">¿No tienes cuenta? <a href="#" id="show-register">Registro here</a></p>
-                </form>
+                    <div id="connection-status" class="status-badge connecting">Connecting...</div>
+                </div>
+            </header>
+
+            <section class="game-section">
+                <div class="section-header">
+                    <h3>Juego en vivo</h3>
+                    <p>Muévete con WASD o flechas. El servidor calcula la posición.</p>
+                </div>
+
+                <div class="game-wrapper">
+                    <canvas id="game"></canvas>
+                </div>
             </section>
 
-            <section id="register-section" class="hidden">
-                <h2>Registro</h2>
-                <form id="register-form">
-                    <div class="form-group">
-                        <label for="reg-username">Username</label>
-                        <input type="text" id="reg-username" required placeholder="new_player">
-                    </div>
-                    <div class="form-group">
-                        <label for="reg-password">Password</label>
-                        <input type="password" id="reg-password" required placeholder="••••••••">
-                    </div>
-                    <button type="submit" class="btn btn-success">Crear cuenta</button>
-                    <p class="toggle-text">¿Ya tienes cuenta? <a href="#" id="show-login">Iniciar sesión here</a></p>
-                </form>
+            <section class="players-section">
+                <div class="section-header">
+                    <h3>Jugadores en línea</h3>
+                </div>
+                <div class="players-grid" id="players-list">
+                    <!-- Players will be rendered here -->
+                </div>
             </section>
         </main>
-
-        <div id="message-container"></div>
     </div>
+
     <script src="js/config.js"></script>
     <script src="app.js"></script>
 </body>
